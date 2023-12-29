@@ -134,6 +134,8 @@ impl Order {
             None,
             self.buyer_invoice.clone(),
             Some(self.created_at),
+            None,
+            None,
         )
     }
 }
@@ -157,6 +159,8 @@ pub struct SmallOrder {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub buyer_invoice: Option<String>,
     pub created_at: Option<i64>,
+    pub buyer_pubkey: Option<String>,
+    pub seller_pubkey: Option<String>,
 }
 
 #[allow(dead_code)]
@@ -175,6 +179,8 @@ impl SmallOrder {
         master_seller_pubkey: Option<String>,
         buyer_invoice: Option<String>,
         created_at: Option<i64>,
+        buyer_pubkey: Option<String>,
+        seller_pubkey: Option<String>,
     ) -> Self {
         Self {
             id,
@@ -189,6 +195,8 @@ impl SmallOrder {
             master_seller_pubkey,
             buyer_invoice,
             created_at,
+            buyer_pubkey,
+            seller_pubkey,
         }
     }
     /// New order from json string
